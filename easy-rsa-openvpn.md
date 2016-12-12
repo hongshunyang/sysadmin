@@ -78,15 +78,8 @@ pki/issued/serverReq1.crt 就是经过签名的有效证书，默认3650天有�
 easyrsa init-pki
 easyrsa build-ca
 
-##密钥／ddos
-easyrsa gen-dh
-penvpn --genkey --secret pki/ta.key
-
 > pki/ca.crt
 > pki/private/ca.key
-
->pki/dh.pem
->pki/ta.key
 
 ```
 
@@ -99,6 +92,13 @@ easyrsa gen-req openvpn_server1
 > pki/reqs/openvpn_server1.req
 
 #submit pki/reqs/openvpn_server1.req to ca
+
+##密钥／ddos
+easyrsa gen-dh
+penvpn --genkey --secret pki/ta.key
+
+>pki/dh.pem
+>pki/ta.key
 
 ```
 
@@ -162,16 +162,3 @@ tls-auth ta.key 1
 ...
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
